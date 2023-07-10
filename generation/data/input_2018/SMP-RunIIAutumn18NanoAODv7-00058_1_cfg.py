@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: --python_filename SMP-RunIIAutumn18NanoAODv7-00058_1_cfg.py --eventcontent NANOAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAODSIM --fileout file:SMP-RunIIAutumn18NanoAODv7-00058.root --conditions 102X_upgrade2018_realistic_v21 --step NANO --filein file:SMP-RunIIAutumn18MiniAOD-00050.root --era Run2_2018,run2_nanoAOD_102Xv1 --no_exec --mc -n -1
+# with command line options: --python_filename SMP-RunIIAutumn18NanoAODv7-00058_1_cfg.py --eventcontent NANOEDMAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAODSIM --fileout file:SMP-RunIIAutumn18NanoAODv7-00058.root --conditions 102X_upgrade2018_realistic_v21 --step NANO --filein dbs:/WLLJJ_WToLNu_EWK_TuneCP5_13TeV_madgraph-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM --era Run2_2018,run2_nanoAOD_102Xv1 --no_exec --mc -n 10000
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.StandardSequences.Eras import eras
@@ -37,13 +37,14 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('--python_filename nevts:-1'),
+    annotation = cms.untracked.string('--python_filename nevts:10000'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
 
 # Output definition
 
+# process.NANOAODSIMoutput = cms.OutputModule("PoolOutputModule",
 process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
     compressionAlgorithm = cms.untracked.string('LZMA'),
     compressionLevel = cms.untracked.int32(9),
@@ -88,12 +89,6 @@ process = addMonitoring(process)
 # End of customisation functions
 
 # Customisation from command line
-
-process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))
-process.genWeightsTable.debug = cms.untracked.bool(True)
-#process.genWeightsTable.missingLHEHeaderFile = cms.FileInPath('VBSAnalysis/NanoAODProduction/data/initrwgt17.header')
-process.genWeightsTable.preferredPDFs = cms.VPSet(cms.PSet( name = cms.string('NNPDF31_nnlo_hessian_pdfas'), lhaid = cms.uint32(306000)), cms.PSet( name = cms.string('NNPDF31_nnlo_as_0118_mc'), lhaid = cms.uint32(316200)))
-
 
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete

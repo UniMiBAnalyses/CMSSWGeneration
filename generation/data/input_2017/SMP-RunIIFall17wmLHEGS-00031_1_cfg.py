@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/GenProduction/python/SMP-RunIIFall17wmLHEGS-00031-fragment.py --python_filename SMP-RunIIFall17wmLHEGS-00031_1_cfg.py --eventcontent RAWSIM,LHE --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM,LHE --fileout file:SMP-RunIIFall17wmLHEGS-00031.root --conditions 93X_mc2017_realistic_v3 --beamspot Realistic25ns13TeVEarly2017Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(96) --step LHE,GEN,SIM --geometry DB:Extended --era Run2_2017 --no_exec --mc -n 274
+# with command line options: Configuration/GenProduction/python/SMP-RunIIFall17wmLHEGS-00031-fragment.py --python_filename SMP-RunIIFall17wmLHEGS-00031_1_cfg.py --eventcontent RAWSIM,LHE --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM,LHE --fileout file:SMP-RunIIFall17wmLHEGS-00031.root --conditions 93X_mc2017_realistic_v3 --beamspot Realistic25ns13TeVEarly2017Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(92) --step LHE,GEN,SIM --geometry DB:Extended --era Run2_2017 --no_exec --mc -n 274
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.StandardSequences.Eras import eras
@@ -121,7 +121,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.6.0/WZJJTo3LNuJJ_EWK_4F/WLLJJ_WToLNu_EWK_4F_MLL-60_slc6_amd64_gcc481_CMSSW_7_1_30_tarball.tar.xz'),
-    nEvents = cms.untracked.uint32(290)
+    nEvents = cms.untracked.uint32(274),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
@@ -160,7 +160,7 @@ process = addMonitoring(process)
 
 # Customisation from command line
 
-process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(96)
+process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(92)
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete
 process = customiseEarlyDelete(process)

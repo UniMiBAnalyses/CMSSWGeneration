@@ -3,61 +3,80 @@
         "flowlink": "https://cms-pdmv.cern.ch/mcm/chained_requests?contains=SMP-RunIISummer16NanoAODv7-00241&page=0&shown=15", 
         "lhe": {
             "SCRAM_ARCH": "slc6_amd64_gcc481", 
-            "filename": "", 
+            "filename": "SMP-RunIISummer15wmLHEGS-00046_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIISummer15wmLHEGS-00046", 
-            "release": "CMSSW_7_1_21_patch2"
+            "release": "CMSSW_7_1_21_patch2", 
+            "singularity": true
         }, 
         "miniAOD": {
             "SCRAM_ARCH": "slc6_amd64_gcc630", 
-            "filename": "", 
+            "filename": "SMP-RunIISummer16MiniAODv3-00029_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIISummer16MiniAODv3-00029", 
             "release": "CMSSW_9_4_9"
         }, 
         "nanoAOD": {
             "SCRAM_ARCH": "slc6_amd64_gcc700", 
-            "filename": "", 
+            "filename": "SMP-RunIISummer16NanoAODv7-00241_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIISummer16NanoAODv7-00241", 
             "release": "CMSSW_10_2_22"
         }, 
         "premix": {
             "SCRAM_ARCH": "slc6_amd64_gcc530", 
-            "filename": "", 
+            "filename": [
+                "SMP-RunIISummer16DR80Premix-00060_1_cfg.py", 
+                "SMP-RunIISummer16DR80Premix-00060_2_cfg.py"
+            ], 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIISummer16DR80Premix-00060", 
             "release": "CMSSW_8_0_21"
-        }
+        }, 
+        "steps": [
+            "lhe", 
+            "premix", 
+            "miniAOD", 
+            "nanoAOD"
+        ]
     }, 
     "2017": {
         "flowlink": "https://cms-pdmv.cern.ch/mcm/chained_requests?contains=SMP-RunIIFall17NanoAODv7-00030&page=0&shown=15", 
         "lhe": {
             "SCRAM_ARCH": "slc6_amd64_gcc630", 
-            "filename": "", 
+            "filename": "SMP-RunIIFall17wmLHEGS-00031_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIFall17wmLHEGS-00031", 
             "release": "CMSSW_9_3_4"
         }, 
         "miniAOD": {
             "SCRAM_ARCH": "slc6_amd64_gcc630", 
-            "filename": "", 
+            "filename": "SMP-RunIIFall17MiniAODv2-00029_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIFall17MiniAODv2-00029", 
             "release": "CMSSW_9_4_6_patch1"
         }, 
         "nanoAOD": {
             "SCRAM_ARCH": "slc6_amd64_gcc700", 
-            "filename": "", 
+            "filename": "SMP-RunIIFall17NanoAODv7-00030_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIFall17NanoAODv7-00030", 
             "release": "CMSSW_10_2_22"
         }, 
         "premix": {
             "SCRAM_ARCH": "slc6_amd64_gcc630", 
-            "filename": "", 
+            "filename": [
+                "SMP-RunIIFall17DRPremix-00049_2_cfg.py", 
+                "SMP-RunIIFall17DRPremix-00049_1_cfg.py"
+            ], 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIFall17DRPremix-00049", 
             "release": "CMSSW_9_4_6_patch1"
-        }
+        }, 
+        "steps": [
+            "lhe", 
+            "premix", 
+            "miniAOD", 
+            "nanoAOD"
+        ]
     }, 
     "2018": {
         "flowlink": "https://cms-pdmv.cern.ch/mcm/chained_requests?contains=SMP-RunIIAutumn18NanoAODv7-00058&page=0&shown=15", 
         "lhe": {
             "SCRAM_ARCH": "slc6_amd64_gcc700", 
-            "filename": "", 
+            "filename": "SMP-RunIIFall18wmLHEGS-00062_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIFall18wmLHEGS-00062", 
             "release": "CMSSW_10_2_6"
         }, 
@@ -69,7 +88,7 @@
         }, 
         "nanoAOD": {
             "SCRAM_ARCH": "slc6_amd64_gcc700", 
-            "filename": "", 
+            "filename": "SMP-RunIIAutumn18NanoAODv7-00058_1_cfg.py", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIAutumn18NanoAODv7-00058", 
             "release": "CMSSW_10_2_22"
         }, 
@@ -78,6 +97,24 @@
             "filename": "", 
             "link": "https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SMP-RunIIAutumn18DRPremix-00050", 
             "release": "CMSSW_10_2_6"
-        }
+        }, 
+        "steps": [
+            "lhe", 
+            "premix", 
+            "miniAOD", 
+            "nanoAOD"
+        ]
+    }, 
+    "UL2016": {
+        "flowlink": "https://cms-pdmv.cern.ch/mcm/chained_requests?contains=SMP-RunIISummer20UL16NanoAODv9-00073&page=0&shown=15", 
+        "steps": [
+            "lhe", 
+            "sim", 
+            "digipremix", 
+            "hlt", 
+            "reco", 
+            "miniAOD", 
+            "nanoAOD"
+        ]
     }
 }
