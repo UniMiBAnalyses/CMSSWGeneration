@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/GenProduction/python/SMP-RunIISummer15wmLHEGS-00046-fragment.py --python_filename SMP-RunIISummer15wmLHEGS-00046_1_cfg.py --eventcontent RAWSIM,LHE --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM,LHE --fileout file:SMP-RunIISummer15wmLHEGS-00046.root --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(26) --step LHE,GEN,SIM --magField 38T_PostLS1 --no_exec --mc -n 288
+# with command line options: Configuration/GenProduction/python/SMP-RunIISummer15wmLHEGS-00046-fragment.py --python_filename SMP-RunIISummer15wmLHEGS-00046_1_cfg.py --eventcontent RAWSIM,LHE --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM,LHE --fileout file:SMP-RunIISummer15wmLHEGS-00046.root --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(23) --step LHE,GEN,SIM --magField 38T_PostLS1 --no_exec --mc -n 288
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('SIM')
@@ -144,4 +144,4 @@ process = customisePostLS1(process)
 # End of customisation functions
 
 # Customisation from command line
-process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(26)
+process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(23)

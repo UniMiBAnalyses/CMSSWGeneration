@@ -1,5 +1,5 @@
 #! /bin/bash
-sed -i "12s/.*/Queue 40 proc in ($1)/g" submit.jdl
+sed -i "12s/.*/Queue 3000 proc in ($1)/g" submit.jdl
 mkdir -p output/$1
 mkdir -p log/$1
 chmod +x submit.jdl
