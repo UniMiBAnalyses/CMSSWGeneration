@@ -10,20 +10,41 @@ import glob
 import sys
 import re
 
-        
-
 def download(path, link, run=True):
     r = requests.get(link, verify=False)
     if r.status_code!=200:
         print("Bad response from server")
         sys.exit(1)
     lines = r.text.split("\n")
-    begin = lines.index(list(filter(lambda k: 'export SCRAM_ARCH' in k, lines))[0])
-    scram = lines[begin].split("=")[-1]
-    # end = lines.index(list(filter(lambda k: 'EndOfTestFile' == k, lines))[0])
-    end = None
-    lines = lines[begin:end]
+    try:
+        begin_voms = lines.index(list(filter(lambda k: 'voms-proxy-init' in k, lines))[0])+1
+    except IndexError:
+        print("voms_proxy_init_line NOT found in {}, trying with export SCRAM_ARCH as begin.".format(link))
+        print("If there was a download of something before the SCRAM ARCH, it will be missing and something is likely to fail")
+        begin_voms = None
+    
+    begin_scram = lines.index(list(filter(lambda k: 'export SCRAM_ARCH' in k, lines))[0])
+    scram = lines[begin_scram].split("=")[-1]
+        
+    ##index used to get the end of the file and the name of the sh file
+    indices = [i for i, line in enumerate(lines) if 'EndOfTestFile' in line]
+    index = max(indices)
+
+    end = index +1
+    print("OOOOOO: ", lines[index-1])
+    shFileName = lines[index-1].split(".sh")[0].split(" ")[-1] + ".sh\n"
+    print("Oooooo: ", shFileName)
+    # end = None
+    lines = lines[begin_voms:end] if begin_voms is not None else lines[begin_scram:end]
     lines = list(map(lambda k: k+'\n', lines))
+
+    ## these lines are needed since the executable files in link dumps everything in a test.sh which is then execute
+    ## and I had to put the end of the file in "EndOfTestFile" since otherwise the test is executed in a singularity 
+    ## which is likely to fail in cmsconnect
+    lines += "chmod +x {} \n".format(shFileName)
+    lines += "sed -i 's/mv \.\.\/\.\.\/Configuration/cp -r \.\.\/\.\.\/Configuration/g' {}".format(shFileName)
+    lines += "./{} \n".format(shFileName)
+
     if not os.path.isdir(path):
         os.makedirs(path)
     fileName = "script.sh" 
@@ -64,7 +85,7 @@ def download(path, link, run=True):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-y","--year", help="Year" , required=True)
-    parser.add_argument("-s","--steps", help="Step to download", nargs="+", required=True)
+    parser.add_argument("-s","--steps", help="Step to download", nargs="+", required=False, default=["lhe", "sim", "digipremix", "hlt", "reco", "miniAOD", "nanoAOD"])
     parser.add_argument("-f","--fix", help="If true fixes input and output file names of year specified, you should first have created files for the entire flow" , nargs='?', type=int, const=0, default=0)
 
 
@@ -83,6 +104,17 @@ if __name__ == "__main__":
             stepFiles.extend(a)
         previousFilename = ""
         for f in stepFiles:
+            ## fix the numberOfThreads to 1, then in Generate it will be possible to go multithread. to do:
+            # fixThreads(f)
+            
+            ## modify number of events hardcoded:
+            with open(f, 'r') as file:
+                filedata = file.read()
+            filedata = re.sub(r'input\s*=\s*cms\.untracked\.int32\(\d+\)', 'input = cms.untracked.int32(-1)', filedata)
+            filedata = re.sub(r'nevts:\d+', 'nevts:-1', filedata)
+            with open(f, 'w') as file:
+                file.write(filedata)
+
             if previousFilename!= "":
                 # replace for this file the input file name with previousFilename
                 print("Should write {} as input for {}".format(previousFilename, f))

@@ -145,6 +145,7 @@ def generate(name, year, gridpack, removeOldRoot, dipoleRecoil, events, jobs, do
         if eos_out_path == "":
            jdl += 'transfer_output_remaps = "{}.root = {}/$(proc)_$(Cluster)_$(Step).root"\n'.format(outputFile, os.path.abspath("output/{}/root".format(name)))
            jdl += "when_to_transfer_output = ON_EXIT\n"
+        jdl += 'MY.WantOS = "el7"'
         jdl += "Queue {} proc in ({})\n".format(jobs, name)
 
         with open("output/{}/submit.jdl".format(name), "w") as file:
@@ -237,9 +238,9 @@ def generate(name, year, gridpack, removeOldRoot, dipoleRecoil, events, jobs, do
             elif k == "miniAOD" and totalSteps[-1] != "miniAOD":
                 filesToRemove.append(file.split("_")[0]+".root")
         wrapper += "\n\n"
-    wrapper += "rm CMSSW_*tgz\n"
-    wrapper += "rm {}\n".format(" ".join(filesToRemove))
-    wrapper += "rm -rf {} *py\n".format(openCMSSW)
+    # wrapper += "rm CMSSW_*tgz\n"
+    # wrapper += "rm {}\n".format(" ".join(filesToRemove))
+    # wrapper += "rm -rf {} *py\n".format(openCMSSW)
 
     if eos_out_path != "":
        wrapper += "eos cp SMP-RunIIAutumn18NanoAODv7-00058.root $2\n".format(eos_out_path) 

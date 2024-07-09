@@ -1,34 +1,25 @@
 {
-    "TEST_Wewk_18v7": {
-        "year": "2018",
-        "gridpack": "/home/abulla/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+    "TEST_Wewk_18v9": {
+        "year": "UL2018",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "dipoleRecoil": true,
         "removeOldRoot": true,
         "events": 100,
         "jobs": 1,
         "doBatch":1
     },
-    "Wewk_18v7": {
-        "year": "2018",
-        "gridpack": "/home/abulla/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+    "sm_qcd_inter2_18v9": {
+        "year": "UL2018",
+        "gridpack": "/home/abulla/inter_studies/inter2/ewk_qcd_inter2_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "dipoleRecoil": true,
         "removeOldRoot": true,
         "events": 2000,
-        "jobs": 10000,
-        "doBatch":1
-    },
-    "TEST_Wewk_18v9": {
-        "year": "UL2018",
-        "gridpack": "/home/abulla/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
-        "dipoleRecoil": true,
-        "removeOldRoot": true,
-        "events": 100,
-        "jobs": 1,
+        "jobs": 1000,
         "doBatch":1
     },
     "Wewk_18v9": {
         "year": "UL2018",
-        "gridpack": "/home/abulla/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "dipoleRecoil": true,
         "removeOldRoot": true,
         "events": 2000,
@@ -37,11 +28,29 @@
     },
     "TEST_Wewk_17v9": {
         "year": "UL2017",
-        "gridpack": "/home/abulla/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
         "dipoleRecoil": true,
         "removeOldRoot": true,
-        "events": 100,
+        "events": 1000,
         "jobs": 1,
+        "doBatch":1
+    },
+    "TEST_Wewk_16v9HIPM": {
+        "year": "UL2016HIPM",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 1000,
+        "jobs": 1,
+        "doBatch":1
+    },
+    "Wewk_17v9": {
+        "year": "UL2017",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 10000,
         "doBatch":1
     }
 }
