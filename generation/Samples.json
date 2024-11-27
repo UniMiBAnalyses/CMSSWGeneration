@@ -52,5 +52,50 @@
         "events": 2000,
         "jobs": 10000,
         "doBatch":1
+    },
+    "Wewk_16v9HIPM": {
+        "year": "UL2016HIPM",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 5000,
+        "doBatch":1
+    },
+    "TEST_Wewk_16v9noHIPM": {
+        "year": "UL2016noHIPM",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 1,
+        "doBatch":1
+    },
+    "Wewk_16v9noHIPM": {
+        "year": "UL2016noHIPM",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/MadGraph5_aMCatNLO/Wewk_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 10000,
+        "doBatch":1
+    },
+    "TEST_Wewk_18v9NLO": {
+        "year": "UL2018NLO",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/Powheg/TAR/VBF_W-Z_slc7_amd64_gcc700_CMSSW_10_6_39_VBF_Wp_m_13TeV.tgz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 2,
+        "doBatch":0
+    },
+    "Wewk_18v9NLO": {
+        "year": "UL2018NLO",
+        "gridpack": "/home/abulla/old_genproductions/genproductions/bin/Powheg/TAR/VBF_W-Z_slc7_amd64_gcc700_CMSSW_10_6_39_VBF_Wp_m_13TeV.tgz",
+        "dipoleRecoil": true,
+        "removeOldRoot": true,
+        "events": 2000,
+        "jobs": 2000,
+        "doBatch":0
     }
 }

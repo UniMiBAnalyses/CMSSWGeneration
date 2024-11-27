@@ -320,5 +320,59 @@
             "miniAOD", 
             "nanoAOD"
         ]
+    },
+    "UL2018NLO": {
+        "digipremix": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18DIGIPremix-04269_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18DIGIPremix-04269", 
+            "release": "CMSSW_10_6_17_patch1"
+        }, 
+        "flowlink": "https://cms-pdmv-prod.web.cern.ch/mcm/chained_requests?prepid=HIG-chain_RunIISummer20UL18wmLHEGEN_flowRunIISummer20UL18SIM_flowRunIISummer20UL18DIGIPremix_flowRunIISummer20UL18HLT_flowRunIISummer20UL18RECO_flowRunIISummer20UL18MiniAODv2_flowRunIISummer20UL18NanoAODv9-04119&page=0&shown=15", 
+        "hlt": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18HLT-04288_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18HLT-04288", 
+            "release": "CMSSW_10_2_16_UL"
+        }, 
+        "lhe": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18wmLHEGEN-06667_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18wmLHEGEN-06667", 
+            "release": "CMSSW_10_6_30_patch1"
+        }, 
+        "miniAOD": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18MiniAODv2-04288_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18MiniAODv2-04288", 
+            "release": "CMSSW_10_6_20"
+        }, 
+        "nanoAOD": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18NanoAODv9-03981_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18NanoAODv9-03981", 
+            "release": "CMSSW_10_6_26"
+        }, 
+        "reco": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18RECO-04288_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18RECO-04288", 
+            "release": "CMSSW_10_6_17_patch1"
+        }, 
+        "sim": {
+            "SCRAM_ARCH": "slc7_amd64_gcc700", 
+            "filename": "HIG-RunIISummer20UL18SIM-04288_1_cfg.py", 
+            "link": "https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_setup/HIG-RunIISummer20UL18SIM-04288", 
+            "release": "CMSSW_10_6_17_patch1"
+        }, 
+        "steps": [
+            "lhe", 
+            "sim", 
+            "digipremix", 
+            "hlt", 
+            "reco", 
+            "miniAOD", 
+            "nanoAOD"
+        ]
     }
 }

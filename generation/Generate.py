@@ -42,16 +42,16 @@ def create_CMSSW_tar(release, singularity):
         script += "scram project CMSSW {}\n".format(release)
         script += "cd {}/src\n".format(release)
         script += "eval `scramv1 runtime -sh`\n"
-        if release =="CMSSW_10_2_22" or release =="CMSSW_10_2_24":
-            script += "git cms-init\n"
-            script += "git cms-merge-topic giorgiopizz:patch_10_2_22_nanoAOD_reweight\n"
-            # Little fix because last commit of giorgio branch does not work in 10_2_22 
-            # but does work in 10_2_24
-            if release =="CMSSW_10_2_22":
-               script += "git checkout 0c5417182b0\n" 
-        if release == "CMSSW_10_6_26":
-            script += "git cms-init\n"
-            script += "git cms-merge-topic acmbulla:10_6_26_reweight_patch\n"
+        # if release =="CMSSW_10_2_22" or release =="CMSSW_10_2_24":
+        #     script += "git cms-init\n"
+        #     script += "git cms-merge-topic giorgiopizz:patch_10_2_22_nanoAOD_reweight\n"
+        #     # Little fix because last commit of giorgio branch does not work in 10_2_22 
+        #     # but does work in 10_2_24
+        #     if release =="CMSSW_10_2_22":
+        #        script += "git checkout 0c5417182b0\n" 
+        # if release == "CMSSW_10_6_26":
+        #     script += "git cms-init\n"
+        #     script += "git cms-merge-topic acmbulla:10_6_26_reweight_patch\n"
         #elif release == "CMSSW_10_2_6":
         #    print("--> Patching 10_2_6")
         #    script += "git cms-init\n"
@@ -134,7 +134,7 @@ def generate(name, year, gridpack, removeOldRoot, dipoleRecoil, events, jobs, do
         else: 
            jdl += "arguments = $(Step)\n"
         jdl += "use_x509userproxy = true\n"
-        jdl += " +JobFlavour = \"nextweek\"\n"
+        jdl += "+JobFlavour = \"nextweek\"\n"
         # jdl += "request_cpus = 8 \n"
         # jdl += "request_disk = 35000000 \n" 
         jdl += "should_transfer_files = YES\n"
@@ -145,7 +145,7 @@ def generate(name, year, gridpack, removeOldRoot, dipoleRecoil, events, jobs, do
         if eos_out_path == "":
            jdl += 'transfer_output_remaps = "{}.root = {}/$(proc)_$(Cluster)_$(Step).root"\n'.format(outputFile, os.path.abspath("output/{}/root".format(name)))
            jdl += "when_to_transfer_output = ON_EXIT\n"
-        jdl += 'MY.WantOS = "el7"'
+        jdl += 'MY.WantOS = "el7"\n'
         jdl += "Queue {} proc in ({})\n".format(jobs, name)
 
         with open("output/{}/submit.jdl".format(name), "w") as file:
