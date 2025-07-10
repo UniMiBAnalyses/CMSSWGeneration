@@ -13,6 +13,12 @@ git clone git@github.com:UniMiBAnalyses/CMSSWGeneration.git;
 cd CMSSWGeneration/crab_miniaod_production/Era2018UL/ZH_HToGluGlu_ZToLL_powheg_pythia8
 ````
 
+For specific branch
+```sh
+git clone -b HHbbtautau git@github.com:UniMiBAnalyses/CMSSWGeneration.git;
+````
+
+
 `Disclaimer`: base commands for the various steps are taken from [[McM]](https://cms-pdmv.cern.ch/mcm/) for the `RunIISummer20UL18MiniAODv2` production chain. 
 
 # LHE+GEN step
