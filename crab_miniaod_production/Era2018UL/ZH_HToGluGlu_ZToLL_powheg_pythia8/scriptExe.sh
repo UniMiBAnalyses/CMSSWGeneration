@@ -39,6 +39,10 @@ echo "cmsRun -e -j FrameworkJobReport.xml reco_step.py "$3" inputName=hltStep.ro
 cmsRun -e -j FrameworkJobReport.xml reco_step.py $3 inputName=hltStep.root outputName=recoStep.root
 rm hltStep.root
 
-echo "cmsRun -e -j FrameworkJobReport.xml miniaod_step.py "$3" inputName=recoStep.root "$4
-cmsRun -e -j FrameworkJobReport.xml miniaod_step.py $3 inputName=recoStep.root $4
+echo "cmsRun -e -j FrameworkJobReport.xml miniaod_step.py "$3" inputName=recoStep.root outputName=miniStep.root"
+cmsRun -e -j FrameworkJobReport.xml miniaod_step.py $3 inputName=recoStep.root outputName=miniStep.root
 rm recoStep.root
+
+echo "cmsRun -e -j FrameworkJobReport.xml nanoaod_step.py "$3" inputName=miniStep.root "$4
+cmsRun -e -j FrameworkJobReport.xml nanoaod_step.py $3 inputName=miniStep.root $4
+rm miniStep.root

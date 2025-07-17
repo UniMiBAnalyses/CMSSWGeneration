@@ -99,7 +99,18 @@ git clone -b HHbbtautau git@github.com:UniMiBAnalyses/CMSSWGeneration.git;
   * `nThreads`: number of parallel threads
   * `inputName`: name of the input file containing RECO events (local file)
   * `outputName`: name of the output MINIAOD file to be produced
-* Finally, copy `miniaod_step.py` into `miniaod_step_fake.py` in order to submit the crab jobs. The only difference between the two is replacing the `PoolSource` with an `EmptySource` module as expected for event generation
+
+
+# MINIAOD step
+
+* Generate the base configuration via:
+  ```sh
+cmsDriver.py  --eventcontent NANOEDMAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAODSIM --conditions 106X_upgrade2018_realistic_v16_L1v1 --step NANO --era Run2_2018,run2_nanoAOD_106Xv2 --python_filename SMP-RunIISummer20UL18NanoAODv9-00126_1_cfg.py --fileout file:SMP-RunIISummer20UL18NanoAODv9-00126.root --filein "dbs:/DYJetsToLL_LHEFilterPtZ-250To400_MatchEWPDG20_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM" --number 1395 --number_out 1395 --no_exec --mc  ```
+* Then, the `nanoaod_step.py` is produced with the following settings:
+  * `nThreads`: number of parallel threads
+  * `inputName`: name of the input file containing MINIAOD events (local file)
+  * `outputName`: name of the output NANOAOD file to be produced
+* Finally, copy `nanoaod_step.py` into `nanoaod_step_fake.py` in order to submit the crab jobs. The only difference between the two is replacing the `PoolSource` with an `EmptySource` module as expected for event generation
 
 # Crab config files
 
@@ -108,5 +119,5 @@ git clone -b HHbbtautau git@github.com:UniMiBAnalyses/CMSSWGeneration.git;
   * Name of the bash script that needs to be executed at the node `scriptExe.sh`
   * Parameters for the bash script provided as `scriptArgs`
   * Stage out folder on some computing center `T2_US_UCSD` used as default
-  * Name of the DAS dataset that will be produced by crab publishing the miniAOD files
+  * Name of the DAS dataset that will be produced by crab publishing the nanoAOD files
   * Number of events and events per-job that will be produced.
