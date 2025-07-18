@@ -6,7 +6,8 @@ from Configuration.Eras.Modifier_run2_nanoAOD_106Xv2_cff import run2_nanoAOD_106
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('analysis')
 options.register('nThreads', 1, VarParsing.multiplicity.singleton,VarParsing.varType.int,"nThreads")
-options.register('outputName', "nanoaodStep.root", VarParsing.multiplicity.singleton,VarParsing.varType.string,"outputName")
+options.register('inputName',  "miniStep.root", VarParsing.multiplicity.singleton,VarParsing.varType.string,"inputName")
+options.register('outputName', "nanoStep.root", VarParsing.multiplicity.singleton,VarParsing.varType.string,"outputName")
 options.parseArguments()
 
 process = cms.Process('NANO',Run2_2018,run2_nanoAOD_106Xv2)
@@ -24,43 +25,17 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(options.maxEvents),
-    output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
+    input = cms.untracked.int32(options.maxEvents)
 )
 
 # Input source
 process.source = cms.Source("EmptySource")
 
+
 process.options = cms.untracked.PSet(
-    FailPath = cms.untracked.vstring(),
-    IgnoreCompletely = cms.untracked.vstring(),
-    Rethrow = cms.untracked.vstring(),
-    SkipEvent = cms.untracked.vstring(),
-    accelerators = cms.untracked.vstring('*'),
-    allowUnscheduled = cms.obsolete.untracked.bool,
-    canDeleteEarly = cms.untracked.vstring(),
-    deleteNonConsumedUnscheduledModules = cms.untracked.bool(True),
-    dumpOptions = cms.untracked.bool(False),
-    emptyRunLumiMode = cms.obsolete.untracked.string,
-    eventSetup = cms.untracked.PSet(
-        forceNumberOfConcurrentIOVs = cms.untracked.PSet(
-            allowAnyLabel_=cms.required.untracked.uint32
-        ),
-        numberOfConcurrentIOVs = cms.untracked.uint32(0)
-    ),
-    fileMode = cms.untracked.string('FULLMERGE'),
-    forceEventSetupCacheClearOnNewRun = cms.untracked.bool(False),
-    holdsReferencesToDeleteEarly = cms.untracked.VPSet(),
-    makeTriggerResults = cms.obsolete.untracked.bool,
-    modulesToIgnoreForDeleteEarly = cms.untracked.vstring(),
-    numberOfConcurrentLuminosityBlocks = cms.untracked.uint32(0),
-    numberOfConcurrentRuns = cms.untracked.uint32(1),
     numberOfStreams = cms.untracked.uint32(options.nThreads),
     numberOfThreads = cms.untracked.uint32(options.nThreads),
-    printDependencies = cms.untracked.bool(False),
-    sizeOfStackForThreadsInKB = cms.optional.untracked.uint32,
-    throwIfIllegalParameter = cms.untracked.bool(True),
-    wantSummary = cms.untracked.bool(False)
+    wantSummary = cms.untracked.bool(True)
 )
 
 # Production Info
@@ -71,7 +46,6 @@ process.configurationMetadata = cms.untracked.PSet(
 )
 
 # Output definition
-
 process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
     compressionAlgorithm = cms.untracked.string('LZMA'),
     compressionLevel = cms.untracked.int32(9),
