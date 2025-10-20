@@ -1,0 +1,8 @@
+import model sm-no_b_mass
+
+define p = u d c s b u~ d~ c~ s~ b~ g
+define j = p
+define bquark = b b~
+generate p p > bquark j j @0
+
+output QCD_bEnriched_3jet_HT_$X_$Y
