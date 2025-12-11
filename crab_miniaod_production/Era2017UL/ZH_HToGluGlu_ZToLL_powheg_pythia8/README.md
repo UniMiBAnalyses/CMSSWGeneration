@@ -41,16 +41,16 @@ There are example production configuration files, it is important in each of the
 
     vomsgrid
 
-    crab checkwrite --site=T2_CH_CERN  --lfn=/store/user/amassiro/PrivateMC/RunIISummer20UL18NanoAODv9/
+    crab checkwrite --site=T2_CH_CERN  --lfn=/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/
 
 
-    crab submit -c crabConfig_VH_H_VToLL_VL_mg_pythia8.py
+    crab submit -c crabConfig_ZH_HToGluGlu_ZToLL_powheg_pythia8.py
 
 
-    crab status -d ./crab_amassiro_crabConfig_VH_H_VToLL_VL
+    crab status -d ./crab_amassiro_crabConfig_ZH_HToGluGlu_ZToLL
 
 
-    ls -alrth /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL18NanoAODv9/
+    ls -alrth /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/
 
 
     /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL18NanoAODv9/VH_H_VToLL_VL_mg_pythia8/RunIISummer20UL18NanoAODv9_106X_upgrade2018_realistic_v11_L1v1-MINIAODSIM/251023_085208/0000/nanoStep_231.root
@@ -59,40 +59,13 @@ There are example production configuration files, it is important in each of the
 
 
 
-
-== CMSSW: Running MG5_aMC for the 89 time
-== CMSSW: produced_lhe  0 nevt  1000 submitting_event  1000  remaining_event  1000
-== CMSSW: run.sh 1000 2970098
-== CMSSW: Now generating 1000 events with random seed 2970098 and granularity 1
-== CMSSW: python3: /lib64/libc.so.6: version `GLIBC_2.28' not found (required by /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_4_8/external/el8_amd64_gcc10/lib/libpython3.9.so.1.0)
-== CMSSW: python3: /lib64/libc.so.6: version `GLIBC_2.25' not found (required by /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_4_8/external/el8_amd64_gcc10/lib/libpython3.9.so.1.0)
-== CMSSW: python3: /lib64/libc.so.6: version `GLIBC_2.26' not found (required by /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_4_8/external/el8_amd64_gcc10/lib/libpython3.9.so.1.0)
-== CMSSW: python3: /lib64/libc.so.6: version `GLIBC_2.27' not found (required by /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_4_8/external/el8_amd64_gcc10/lib/libpython3.9.so.1.0)
-== CMSSW: mv: cannot stat './Events/GridRun_2970098/unweighted_events.lhe.gz': No such file or directory
-== CMSSW: write ./events.lhe.gz
-== CMSSW: gzip: events.lhe.gz: No such file or directory
-== CMSSW: mv: cannot stat 'events.lhe.gz': No such file or directory
-== CMSSW: run 89 finished, total number of produced events: 0/1000
-== CMSSW:
-== CMSSW: Running MG5_aMC for the 90 time
-== CMSSW: produced_lhe  0 nevt  1000 submitting_event  1000  remaining_event  1000
-== CMSSW: run.sh 1000 2970099
-== CMSSW: Now generating 1000 events with random seed 2970099 and granularity 1
-
-
-
 Local test:
 
-    cmsRun gen_step.py      inputGridpack=VHpolar_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz      nEvents=10
+    cmsRun LHEGEN_step_cfg.py      inputGridpack=HZJ_slc7_amd64_gcc700_CMSSW_10_6_27_ZH_HToBB_ZToLL_M125_13TeV_powheg.tgz      nEvents=10
 
+    cmsRun  SIM_step_cfg.py  inputName=genStep.root outputName=simStep.root
 
-    WARNING: Developer's area is created for architecture el8_amd64_gcc10 while your current OS is slc7_amd64.
-    WARNING: You are trying to use SCRAM architecture 'el8' on host with operating system 'slc7'.
-         This is not supported and likely will not work and you might get build/runtime errors. Please either
-         - use correct SCRAM_ARCH to match your host's operating system.
-         - OR use 'cmssw-el8' script to start a singularity container (http://cms-sw.github.io/singularity.html)
-         - OR use host which has 'el8' installed e.g. lxplus8 for el8, lxplus9 for el9 or lxplus7 for slc7.
-
+    cmsRun  DIGI_RAW_premix_step_cfg.py inputName=simStep.root outputName=digirawStep.root
 
 
 
