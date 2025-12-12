@@ -51,11 +51,7 @@ There are example production configuration files, it is important in each of the
 
 
     ls -alrth /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/
-
-
-    /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL18NanoAODv9/VH_H_VToLL_VL_mg_pythia8/RunIISummer20UL18NanoAODv9_106X_upgrade2018_realistic_v11_L1v1-MINIAODSIM/251023_085208/0000/nanoStep_231.root
-
-
+    /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/ZH_HToGluGlu_ZToLL/RunIISummer20UL17NanoAODv9_106X_mc2017_realistic_v6-MINIAODSIM/251211_103240/0000/
 
 
 
@@ -73,8 +69,6 @@ Local test:
 
 
     python3 generateDatasetFileList.py   --dataset  /Neutrino_E-10_gun/RunIISummer20ULPrePremix-UL17_106X_mc2017_realistic_v6-v3/PREMIX   -o mypileup.py
-
-
 
     /Neutrino_E-10_gun/RunIISummer20ULPrePremix-UL17_106X_mc2017_realistic_v6-v3/PREMIX
 
