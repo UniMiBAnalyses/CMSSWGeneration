@@ -53,6 +53,8 @@ There are example production configuration files, it is important in each of the
     ls -alrth /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/
     /eos/cms/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/ZH_HToGluGlu_ZToLL/RunIISummer20UL17NanoAODv9_106X_mc2017_realistic_v6-MINIAODSIM/251211_103240/0000/
 
+    Result:
+    /ZH_HToGluGlu_ZToLL/amassiro-RunIISummer20UL17NanoAODv9_106X_mc2017_realistic_v6-MINIAODSIM-00000000000000000000000000000000/USER
 
 
 Local test:
