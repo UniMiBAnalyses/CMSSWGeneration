@@ -27,7 +27,8 @@ config.Data.unitsPerJob = 1000
 config.Data.totalUnits  = 500000
 config.Data.outLFNDirBase = '/store/user/amassiro/PrivateMC/RunIISummer20UL17NanoAODv9/'
 config.Data.publication   = True
-config.Data.outputPrimaryDataset = 'ZH_HToGluGlu_ZToLL'
+# config.Data.outputPrimaryDataset = 'ZH_HToGluGlu_ZToLL'
+config.Data.outputPrimaryDataset = 'qqZH_HToGluGlu_ZToLL'
 config.Data.outputDatasetTag = 'RunIISummer20UL17NanoAODv9_106X_mc2017_realistic_v6-MINIAODSIM'
 ## Site
 config.Site.storageSite = 'T2_CH_CERN'

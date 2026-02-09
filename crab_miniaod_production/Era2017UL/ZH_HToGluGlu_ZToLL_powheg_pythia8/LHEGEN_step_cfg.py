@@ -112,7 +112,13 @@ process.generator = cms.EDFilter("Pythia8ConcurrentHadronizerFilter",
             'pythia8PSweightsSettings', 
             'processParameters'
         ),
-        processParameters = cms.vstring('SpaceShower:dipoleRecoil = on'),
+        processParameters = cms.vstring(
+            'POWHEG:nFinal = 3',
+            '25:m0 = 125.0',
+            '25:onMode = off',
+            '25:onIfMatch = 21 21', # decay to gluglu
+        ),
+        # processParameters = cms.vstring('SpaceShower:dipoleRecoil = on'),
         pythia8CP5Settings = cms.vstring(
             'Tune:pp 14', 
             'Tune:ee 7', 
