@@ -27,20 +27,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/00000/C23D1F4F-2AD2-E811-B55C-5065F38142E1.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/00000/BE5726D2-1BD2-E811-ACF4-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/EE85A7CE-4ED2-E811-B659-5065F38102F1.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/40113805-5FD2-E811-9C51-EC0D9A8221FE.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/BE7EF452-64D2-E811-A919-E0071B6C9DD0.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/B606967B-65D2-E811-84EB-24BE05C616E1.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/74161721-49D2-E811-950C-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/42BE07F0-4AD2-E811-BE05-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/96B4AC2D-4BD2-E811-9687-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/1C583A17-4BD2-E811-8507-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/0A676E98-4DD2-E811-9466-0242AC130002.root', 
-        '/store/mc/RunIISummer16MiniAODv3/WLLJJ_WToLNu_EWK_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/110000/AE6CBC57-AFD2-E811-A569-E0071B740D80.root'
-    ),
+    fileNames = cms.untracked.vstring('file:SMP-RunIISummer16MiniAODv3-00029.root'),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -57,7 +44,7 @@ process.configurationMetadata = cms.untracked.PSet(
 
 # Output definition
 
-process.NANOEDMAODSIMoutput = cms.OutputModule("PoolOutputModule",
+process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
     compressionAlgorithm = cms.untracked.string('LZMA'),
     compressionLevel = cms.untracked.int32(9),
     dataset = cms.untracked.PSet(
@@ -77,10 +64,10 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mcRun2_asymptotic_v8', ''
 # Path and EndPath definitions
 process.nanoAOD_step = cms.Path(process.nanoSequenceMC)
 process.endjob_step = cms.EndPath(process.endOfProcess)
-process.NANOEDMAODSIMoutput_step = cms.EndPath(process.NANOEDMAODSIMoutput)
+process.NANOAODSIMoutput_step = cms.EndPath(process.NANOAODSIMoutput)
 
 # Schedule definition
-process.schedule = cms.Schedule(process.nanoAOD_step,process.endjob_step,process.NANOEDMAODSIMoutput_step)
+process.schedule = cms.Schedule(process.nanoAOD_step,process.endjob_step,process.NANOAODSIMoutput_step)
 from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 

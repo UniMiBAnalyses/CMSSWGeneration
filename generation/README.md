@@ -1,5 +1,35 @@
 # Some useful scripts to generate with Full Sim given a gridpack
 
+# Step by step guide
+## Downloader.py
+Once you've determined a full sim configuration, aka a list of links of configurations from [CMS MCM](https://cms-pdmv.cern.ch/mcm/) and saved that list inside Steps.json (e.g. look at 2018), you may run
+```
+python Downloader.py -y 2018 -s lhe premix miniAOD nanoAOD
+```
+which will create a flder inside data/input_2018 containing all the `_cfg.py` needed for the full sim. 
+It's also required to rerun Downloader.py with the same year specifying to fix filenames mismatches and the output content
+```
+python Downloader.py -y 2018 -s all --fix 1
+```
+
+## Generate.py
+Instead of Steps.json, here we have Samples.json, where for each key (i.e. the name of the generation, e.g. `Zjj_ewk_dim6_all_18`) we have to specify the full sim configuration name used in Steps.json, e.g.  `2018`, the gridpack path, whether we want to run locally for testing purposes or to run directly on condor.
+Once we have created our entry in Samples.json, run
+``` 
+python Generate.py -s Zjj_ewk_dim6_all_18
+```
+which will create in output a folder named `Zjj_ewk_dim6_all_18`. 
+
+## extractXS.py
+
+Once the batch generation was completed we want the best measure of the process' cross-section. extractXS.py computes a weighted mean of all the .root files' xs. This will be used in the post processing with The Latinos Framework. 
+
+`python extractXS.py Zjj_ewk_dim6_all_18` will do the job. 
+
+
+# Explanations
+
+
 ## Download input files for a given year
 Use `Downloader.py` to dowload input files if you want to change the configuration based on other flow than WLLJJ_WToLNu_EWK.
 First you should change links in Steps.json. Then Downloader will take care of editing `SCRAM_ARCH`, `release` and `filename`.
@@ -8,7 +38,9 @@ You might specify all the steps at one time, but only one year and wheter to run
 
 ## Full Sim generation
 `Generate.py` uses the file `Steps.json` to create the configuration for the full generation given a name, the path to gridpack and the year. 
-In order to run on condor there should be CMSSW tar realeses needed for the generation, if not present it creates them, also patching the release 10_2_22 with [giorgiopizz patch](https://github.com/giorgiopizz/cmssw/tree/patch_10_2_22_nanoAOD_reweight) for reweights.
+In order to run on condor there should be CMSSW tar realeses needed for the generation, if not present it creates them, also patching the release 10_2_22 with [giorgiopizz patch](https://github.com/giorgiopizz/cmssw/tree/patch_10_2_22_nanoAOD_reweight) for reweights. 
+
+*Note that CMSSW_10_2_22 is used to create nanoAOD v7 102x, for previous steps (GEN-SIM ...) different realeases are used.*
 
 
 It's extremely useful to take advantage of `Samples.json` file instead of running Generate.py with command line options, but it's still possible to use command line options. 

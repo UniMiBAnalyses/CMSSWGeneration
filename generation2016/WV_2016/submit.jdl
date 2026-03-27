@@ -1,0 +1,17 @@
+Universe = vanilla 
+Executable = wrapper.sh
+arguments = $(Step) $(proc)
+use_x509userproxy = true
+ +JobFlavour = "nextweek"
+
+RequestCpus = 4
+
+# Error = log/$(proc).err_$(Step)
+# Output = log/$(proc).out_$(Step)
+# Log = log/$(proc).log_$(Step)
+
+should_transfer_files = YES
+
+transfer_input_files = /afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/CMSSWs/CMSSW_7_1_32.tgz,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/CMSSWs/CMSSW_7_1_47_PYTHIA240.tgz,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/CMSSWs/CMSSW_8_0_31.tgz,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/CMSSWs/CMSSW_9_4_9.tgz,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/CMSSWs/CMSSW_10_2_24_patch1_ZV_EFT.tgz,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIISummer15GS-00266_1_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIISummer16DR80Premix-00645_1_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIISummer16DR80Premix-00645_2_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIISummer16MiniAODv3-00478_1_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIISummer16NanoAODv7-00422_1_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/SMP-RunIIWinter15pLHE-00016_1_cfg.py,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/Premix.sh,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/Pythia.sh,/afs/cern.ch/user/g/gboldrin/CMSSWGeneration/generation2016/data/input_2016_WV/LheToEDM.sh
+
+Queue 20000 proc in (tapVjj_ewk_dim6)

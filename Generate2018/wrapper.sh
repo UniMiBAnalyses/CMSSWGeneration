@@ -20,6 +20,9 @@ cmssw_version2="CMSSW_10_6_20"
 # set environment
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 echo "Opening CMSSW_10_2_6"
+ls
+# cd /home/abulla/CMSSWGeneration/Generate2018/input
+pwd
 tar -xzvf $sandbox_name1
 rm $sandbox_name1
 cd $cmssw_version1/src/
@@ -31,6 +34,7 @@ echo $1
 #sed -i "s/^.*tarball.tar.xz.*$/     args = cms.vstring(\'..\/$gridpack_name\'),/" -i $excute_file1
 sed -i 's#^.*tarball.tar.xz.*$#    args = cms.vstring(\"..\/'${gridpack_name}'\"),#' -i $excute_file1 
 # change the request events
+echo "OOOOOOOOOOOOOOOO nevent = "$2
 sed -i "s/int32(2500)/int32($2)/g" -i $excute_file1
 date
 cmsRun $excute_file1
@@ -45,6 +49,7 @@ cmsRun $excute_file4
 rm SMP-RunIIAutumn18DRPremix-00050.root
 date
 
+ls
 rm -rf $cmssw_version1
 tar -xzvf $sandbox_name2
 rm $sandbox_name2

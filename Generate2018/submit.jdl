@@ -1,12 +1,11 @@
 Universe = vanilla
 Executable = wrapper.sh
-arguments = $(proc) 2500
-request_cpus = 8 
+arguments = $(proc) 2000
 should_transfer_files = YES
 Error = log/$(proc)/$(proc).err_$(Step)
 Output = log/$(proc)/$(proc).out_$(Step)
 Log = log/$(proc)/$(proc).log
-transfer_input_files = /home/gpizzati/prova/genproductions/bin/MadGraph5_aMCatNLO/$(proc)_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz, /home/gpizzati/CMSSWGeneration/Generate2018/input/SMP-RunIIFall18wmLHEGS-00062_SM_1_cfg.py,  /home/gpizzati/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18DRPremix-00050_1_cfg.py, /home/gpizzati/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18DRPremix-00050_2_cfg.py, /home/gpizzati/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18MiniAOD-00050_1_cfg.py, /home/gpizzati/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18NanoAODv7-00058_1_cfg.py, /home/gpizzati/CMSSWGeneration/Generate2018/input/CMSSW_10_2_6.tgz, /home/gpizzati/CMSSWGeneration/Generate2018/input/CMSSW_10_6_20.tgz
-transfer_output_remaps = "SMP-RunIIAutumn18NanoAODv7-00058.root = /home/gpizzati/CMSSWGeneration/Generate2018/output/$(proc)/$(proc)_$(Cluster)_$(Step).root"
+transfer_input_files = /home/abulla/CMSSWGeneration/$(proc)_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz, /home/abulla/CMSSWGeneration/Generate2018/input/SMP-RunIIFall18wmLHEGS-00062_SM_1_cfg.py,  /home/abulla/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18DRPremix-00050_1_cfg.py, /home/abulla/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18DRPremix-00050_2_cfg.py, /home/abulla/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18MiniAOD-00050_1_cfg.py, /home/abulla/CMSSWGeneration/Generate2018/input/SMP-RunIIAutumn18NanoAODv7-00058_1_cfg.py, /home/abulla/CMSSWGeneration/Generate2018/input/CMSSW_10_2_6.tgz, /home/abulla/CMSSWGeneration/Generate2018/input/CMSSW_10_6_20.tgz
+transfer_output_remaps = "SMP-RunIIAutumn18NanoAODv7-00058.root = /home/abulla/CMSSWGeneration/Generate2018/output/$(proc)/$(proc)_$(Cluster)_$(Step).root"
 when_to_transfer_output = ON_EXIT
-Queue 40 proc in (Zjj_SM_5f_con_h)
+Queue 3000 proc in (Wewk)
